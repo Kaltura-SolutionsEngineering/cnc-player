@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <script type="text/javascript" src="https://cdnapisec.kaltura.com/p/4574073/embedPlaykitJs/uiconf_id/50066173"></script>
+  <style>
+    .kep-linkify-message {
+      font-family: cursive;
+    }
+  </style>
+</head>
+
+<body>
+  <script defer>
+    function loadCnc(options) {
+      console.log(options);
+      const floaterConfig = {
+        "consent": {
+          "legalTextUrls": [],
+          "defaultSettings": {
+            "receiveNotifications": true,
+            "showFullName": true,
+            "allowChatAndCollaboration": true
+          },
+          "cookieConsent": true
+        },
+        "server": {
+          "jwtToken": options.jwt,
+          "serviceUrl": "https:\/\/chat.nvp1.ovp.kaltura.com\/api_v3"
+        },
+        "theme": {
+          "Common": {
+            "FontFamily": "cursive"
+          }
+        },
+        "ui": {
+          "toastTimeout": "5000",
+          "toastPlayerUiconf": +options.toastPlayerUiconf,
+          "zIndex": 999,
+          "position": {
+            "right": "24px"
+          },
+          "locale": "en",
+          "groupChat": {
+            "enabled": true,
+            "mode": "groupChat",
+            "reactions": true,
+            "reply": true
+          },
+          "instanceOptions": {
+            "enableChat": true,
+            "enableSearch": true
+          }
+        },
+        "helpLink": "\/help",
+        "moderation": {
+          "moderatorUrl": `https://${options.partnerId}.mediaspace.kaltura.com/user/authenticate/ks/${options.ks}`,
+          "ui": {
+            "label": "",
+            "thumbnailUrl": `https://cfvod.kaltura.com/p/${options.partnerId}/thumbnail/${options.entryId}/1_2qbnfp3s/width/36/height/36/type/3`,
+            "message": "keynote",
+            "name": "Keynote 2023",
+            "ctaButton": {
+              "type": "",
+              "label": ""
+            }
+          }
+        }
+        //  "reactions": {
+        //   "mode": "available",
+        //   "sourceUrl": "https:\/\/cdnapisec.kaltura.com\/p\/4574073\/embedPlaykitJs\/uiconf_id\/48975383",
+        //   "endpointUrl": "https:\/\/analytics.kaltura.com",
+        //   "ks": "djJ8NDU3NDA3M3yF6NMG984fAg9DIK_gFj_kKoJTppfxTyH1il03wIQgevAwOTtwe-821r502JQ7vPCmISwB5EGVnioCBCe1_PCHSslMrfgW9Thoy1hsb54El1w-esAQXdzRRXSNvnhcK7kRpq04dbTyMZQWRWoFPvE9"
+        // }
+      };
+
+      function initiateFloater() {
+        floater = KalturaEventsPlatform.collaboration.widgets.floater.new(floaterConfig);
+        floater.render();
+      }
+      initiateFloater();
+
+    }
+    
+    async function initData() {
+      
+      var data = await fetch("https://balsam-charm-verse.glitch.me/embed-cnc/init-data");
+      cncConfig = await data.json();
+      loadCnc(cncConfig);
+  
+    }
+    initData()
+  </script>
+  <div id="kaltura_player_204830229" style="width: 560px;height: 395px"></div>
+  <script type="text/javascript" src="https://cdnapisec.kaltura.com/p/4574073/embedPlaykitJs/uiconf_id/52170952"></script>
+  <script type="text/javascript">
+  try {
+    var kalturaPlayer = KalturaPlayer.setup({
+      targetId: "kaltura_player_204830229",
+      provider: {
+        partnerId: 4574073,
+        uiConfId: 52170952,
+        ks: options.ks
+      }
+    });
+    kalturaPlayer.loadMedia({entryId: '1_2qbnfp3s'});
+  } catch (e) {
+    console.error(e.message)
+  }
+</script>
+</body>
+
+</html>
